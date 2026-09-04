@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#e9e2cf" />
+  <title>Anushka's Garden — Ideas in Bloom</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="enhancements.css" />
+</head>
+<body>
+  <div class="paper-grain"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Anushka's Garden home">
+      <span class="brand-mark">A</span>
+      <span><strong>Anushka’s Garden</strong><small>ideas in bloom</small></span>
+    </a>
+    <nav class="years" aria-label="Garden year">
+      <button aria-label="Previous year">←</button>
+      <button class="year active">2026</button>
+      <button aria-label="Next year">→</button>
+    </nav>
+    <div class="header-actions">
+      <div class="mode-switch" role="group" aria-label="View mode">
+        <button class="active" data-mode="explore">Explore</button>
+        <button data-mode="garden">Gardener</button>
+      </div>
+      <button class="journal-button" id="openJournal">Journal <span id="ideaCount">5</span></button>
+      <button class="add-button" id="openAdd">＋ Plant an idea</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="garden-intro">
+      <p class="eyebrow">THE GARDEN OF 2026</p>
+      <h1>Every idea begins<br><em>beneath the surface.</em></h1>
+      <p class="intro-copy">Wander through a year of sketches, spaces and half-formed thoughts. Some grew wild. Some are still waiting for rain.</p>
+      <div class="legend">
+        <span><i class="dot bloom"></i> In bloom</span>
+        <span><i class="dot growing"></i> Growing</span>
+        <span><i class="dot fragile"></i> Needs care</span>
+      </div>
+    </section>
+
+    <section class="garden" id="garden" aria-label="Interactive idea garden">
+      <svg class="terrain" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency=".025" numOctaves="3" seed="8"/><feDisplacementMap in="SourceGraphic" scale="7"/></filter>
+          <pattern id="soilDots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="3" cy="4" r="1" fill="#8e7456" opacity=".25"/><circle cx="15" cy="13" r=".7" fill="#8e7456" opacity=".2"/></pattern>
+        </defs>
+        <path class="lawn" d="M-50,180 C220,20 500,88 650,204 C842,352 956,65 1250,108 C1472,140 1670,330 1630,690 C1586,1002 1090,936 862,820 C603,688 490,965 185,864 C-87,774 -130,390 -50,180Z"/>
+        <path class="soil" d="M420,170 C602,104 762,205 848,350 C942,509 842,714 650,754 C467,793 257,683 257,482 C257,345 313,212 420,170Z"/>
+        <path class="soil-texture" d="M420,170 C602,104 762,205 848,350 C942,509 842,714 650,754 C467,793 257,683 257,482 C257,345 313,212 420,170Z"/>
+        <path class="path" d="M-20,672 C165,610 238,666 354,705 C504,754 589,682 611,576 C634,462 561,393 653,308 C758,211 887,281 942,385 C1006,508 953,646 1070,706 C1209,776 1364,668 1625,729"/>
+        <g class="water"><path d="M1180,180 C1300,100 1514,129 1560,244 C1597,338 1484,420 1348,402 C1224,386 1110,258 1180,180Z"/><path class="water-line" d="M1224 220c83-45 190-44 276 9M1207 275c105-40 222-26 292 22M1256 337c77-20 148-13 199 8"/></g>
+        <g class="stones" fill="#c7bba0"><ellipse cx="112" cy="684" rx="40" ry="19"/><ellipse cx="206" cy="666" rx="35" ry="18"/><ellipse cx="304" cy="696" rx="39" ry="19"/><ellipse cx="402" cy="729" rx="39" ry="18"/><ellipse cx="510" cy="713" rx="38" ry="18"/></g>
+        <g class="sketch-lines"><path d="M78 126q120 30 208-33M1010 152q61 24 127-19M1079 824q154-65 279-11"/><path d="M92 151q101 27 191-31M1100 846q130-54 251-15"/></g>
+      </svg>
+
+      <div class="month-path" aria-label="Months">
+        <button style="--x:9%;--y:75%">Jan</button><button style="--x:19%;--y:73%">Feb</button>
+        <button class="active" style="--x:29%;--y:77%">Mar</button><button style="--x:39%;--y:80%">Apr</button>
+        <button style="--x:49%;--y:71%">May</button><button style="--x:55%;--y:59%">Jun</button>
+        <button style="--x:58%;--y:45%">Jul</button><button style="--x:65%;--y:35%">Aug</button>
+        <button style="--x:75%;--y:39%">Sep</button><button style="--x:80%;--y:55%">Oct</button>
+        <button style="--x:87%;--y:71%">Nov</button><button style="--x:96%;--y:76%">Dec</button>
+      </div>
+
+      <button class="plant tall" data-id="courtyard" data-month="Mar" style="--x:29%;--y:35%" aria-label="Open Courtyard House idea">
+        <span class="plant-art"><i class="stem"></i><i class="leaf l1"></i><i class="leaf l2"></i><i class="leaf l3"></i><i class="flower f1"></i><i class="flower f2"></i></span>
+        <span class="plant-label"><b>Courtyard House</b><small>Architecture · March</small></span>
+      </button>
+      <button class="plant shrub" data-id="thresholds" data-month="May" style="--x:44%;--y:47%" aria-label="Open Soft Thresholds idea">
+        <span class="plant-art"><i></i><i></i><i></i><i></i><i></i></span>
+        <span class="plant-label"><b>Soft Thresholds</b><small>Material study · May</small></span>
+      </button>
+      <button class="plant tree" data-id="living" data-month="Sep" style="--x:70%;--y:61%" aria-label="Open The Living Archive idea">
+        <span class="plant-art"><i class="trunk"></i><i class="crown c1"></i><i class="crown c2"></i><i class="crown c3"></i><i class="fruit"></i></span>
+        <span class="plant-label"><b>The Living Archive</b><small>Research · September</small></span>
+      </button>
+      <button class="plant fragile-plant" data-id="terracotta" data-month="Jun" style="--x:21%;--y:56%" aria-label="Open Terracotta Light idea, needs care">
+        <span class="care-ring"></span><span class="plant-art"><i class="stem"></i><i class="droop d1"></i><i class="droop d2"></i></span>
+        <span class="plant-label"><b>Terracotta Light</b><small>Needs a little care</small></span>
+      </button>
+      <button class="plant reeds" data-id="rain" data-month="Aug" style="--x:84%;--y:27%" aria-label="Open Rooms for Rain idea">
+        <span class="plant-art"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+        <span class="plant-label"><b>Rooms for Rain</b><small>Landscape · August</small></span>
+      </button>
+
+      <div class="garden-note"><span>✦</span><p><b>March was generous.</b><br>Three new thoughts took root.</p></div>
+      <div class="compass" aria-hidden="true"><span>N</span><i></i></div>
+      <p class="hint">Select a plant to uncover its story</p>
+    </section>
+  </main>
+
+  <aside class="detail-panel" id="detailPanel" aria-hidden="true">
+    <button class="close-panel" id="closePanel" aria-label="Close idea">×</button>
+    <div class="detail-image" id="detailImage"><span>SKETCH / 03</span></div>
+    <p class="detail-meta" id="detailMeta">ARCHITECTURE · MARCH 2026</p>
+    <h2 id="detailTitle">Courtyard House</h2>
+    <p class="detail-body" id="detailBody"></p>
+    <div class="detail-status"><span id="statusText">In bloom</span><div><i id="statusFill"></i></div></div>
+    <blockquote id="detailQuote"></blockquote>
+    <div class="panel-actions"><button id="nurtureBtn">☂ Nurture this idea</button><button class="ghost" id="panelJournal">Open journal →</button></div>
+  </aside>
+
+  <section class="journal-panel" id="journalPanel" aria-hidden="true">
+    <div class="journal-head">
+      <div><p class="eyebrow">FIELD NOTES · 2026</p><h2>The Garden Journal</h2></div>
+      <button class="close-panel" id="closeJournal" aria-label="Close journal">×</button>
+    </div>
+    <div class="journal-controls">
+      <p><span id="journalCount">5</span> ideas growing this year</p>
+      <div><button class="active" data-filter="all">All</button><button data-filter="fragile">Needs care</button></div>
+    </div>
+    <div class="journal-grid" id="journalGrid"></div>
+  </section>
+
+  <dialog id="addDialog">
+    <form method="dialog" id="ideaForm">
+      <button class="dialog-close" type="button" id="closeAdd" aria-label="Close">×</button>
+      <p class="eyebrow">A NEW BEGINNING</p><h2>Plant an idea</h2>
+      <label>Give it a name<input name="title" placeholder="e.g. A house for monsoon light" required /></label>
+      <label>What kind of thought is it?<select name="category"><option>Architecture</option><option>Material study</option><option>Landscape</option><option>Research</option><option>Unsorted thought</option></select></label>
+      <label>When did it take root?<select name="month"><option>Jan</option><option>Feb</option><option selected>Mar</option><option>Apr</option><option>May</option><option>Jun</option><option>Jul</option><option>Aug</option><option>Sep</option><option>Oct</option><option>Nov</option><option>Dec</option></select></label>
+      <label>Leave a first note<textarea name="note" placeholder="What made you want to remember this?"></textarea></label>
+      <label class="photo-field">Add a sketch or photograph<input type="file" name="photo" accept="image/*" /><small>Optional · stored only in this browser for now</small></label>
+      <label class="fragile-check"><input type="checkbox" name="fragile" /><span><b>This idea is fragile</b><small>It will need regular notes or progress to stay alive.</small></span></label>
+      <button class="submit-idea" value="default">Plant in the garden</button>
+    </form>
+  </dialog>
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
